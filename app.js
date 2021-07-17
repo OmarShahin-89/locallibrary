@@ -31,7 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Connecting to database  
 //const mngDB="mongodb+srv://omar_sahin:07061989.Sa@cluster0.ahvby.mongodb.net/my_database?retryWrites=true&w=majority";
-const mngDB= process.env.MONGODB_URI || 'mongodb://127.0.0.1/my_database';
+const mngDB= process.env.MONGODB_URI || 'mongodb+srv://omar_sahin:07061989.Sa@cluster0.ahvby.mongodb.net/my_database?retryWrites=true&w=majority';
 
 mongoose.connect(mngDB,{useNewUrlParser: true, useUnifiedTopology: true});
 //mongoose.connect("mongodb://localhost:27017/my_database",{useNewUrlParser: true, useUnifiedTopology: true});
