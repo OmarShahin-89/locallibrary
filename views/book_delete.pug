@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1 #{title}: #{books.title}
+  
+  p Do you really want to delete this book?
+
+  form(method='POST' action='')
+    div.form-group
+      input#bookid.form-control(name='bookid', required='true', value=books.id )
+    button.btn.btn-primary(type='submit') Delete
+  hr
+  button.btn.btn-secondary(type='submit')
+      a(href=books.url) Cancel

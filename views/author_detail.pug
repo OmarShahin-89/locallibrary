@@ -1,0 +1,43 @@
+extends layout
+
+block content
+
+  h1 Author: #{author.first_name}, #{author.family_name}
+  p #{author.date_of_birth} - #{author.date_of_death}
+
+  div(style='margin-left:20px;margin-top:20px')
+
+    h4 Books
+
+    dl
+      each book in author_books
+        dt
+          a(href=book.url) #{book.title}
+        dd #{book.summary}
+
+      else
+        p This author has no books.
+    hr
+    p
+      a(href=author.url+'/delete') Delete author
+    button.btn.btn-primary(type='button', data-toggle='modal', data-target='#exampleModal') Delete
+
+    div.modal.fade#exampleModal(tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true")
+      div.modal-dialog(role="document")
+        div.modal-content
+          form(method='POST' action='')
+            div.modal-header
+              h5.modal-title#exampleModalLabel #{author.first_name} #{author.family_name}
+              button.close
+                span(aria-hidden='true') &times;
+            div.modal-body
+              dl
+                each book in author_books
+                  dt
+                    a(href=book.url) #{book.title}
+                  dd #{book.summary}
+            div.modal-footer
+              div.form-group
+                  input#authorid.form-control(name='authorid', required='true', value=id)
+              button.btn.btn-primary(type="submit") Delete
+              button.btn.btn-secondary(type="button", data-dismiss="modal") Close
